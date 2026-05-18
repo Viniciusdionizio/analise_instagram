@@ -24,13 +24,13 @@ def carregar_usuarios(arquivo, chave=None):
         if not isinstance(item, dict):
             continue
 
-        # followers_1.json → nomes estão dentro de string_list_data
+        # followers_1.json - nomes estão dentro de string_list_data
         if "string_list_data" in item and not item.get("title"):
             for entry in item["string_list_data"]:
                 if isinstance(entry, dict) and "value" in entry:
                     usuarios.add(entry["value"])
 
-        # following.json → nomes estão em 'title'
+        # following.json - nomes estão em 'title'
         elif "title" in item and item["title"]:
             usuarios.add(item["title"])
 
